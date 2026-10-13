@@ -365,7 +365,7 @@
 
 <script>
   // 1. Paste your n8n webhook URL here later. While empty, the form only shows the thank-you message.
-  var WEBHOOK_URL = "";
+  var WEBHOOK_URL = "https://satchel-commence-underdone.ngrok-free.dev/webhook-test/complydesk-lead";
 
   // 2. Fill hidden UTM fields from the page URL
   var params = new URLSearchParams(window.location.search);
@@ -430,7 +430,10 @@
     btn.textContent = "Sending...";
     fetch(WEBHOOK_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "true"
+      },
       body: JSON.stringify(data)
     })
       .then(function (res) {
